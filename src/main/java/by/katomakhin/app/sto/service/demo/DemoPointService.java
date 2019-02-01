@@ -2,11 +2,13 @@ package by.katomakhin.app.sto.service.demo;
 
 import by.katomakhin.app.sto.model.certificate.PointOfCertificate;
 import by.katomakhin.app.sto.service.IPointService;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class DemoPointService implements IPointService {
     @Override
     public PointOfCertificate getPointByName(String name, String modelName) {

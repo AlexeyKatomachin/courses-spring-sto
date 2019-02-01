@@ -1,6 +1,7 @@
 package by.katomakhin.app.sto.service.dev;
 
 import by.katomakhin.app.sto.conf.ApplicationConfig;
+import by.katomakhin.app.sto.conf.RootConfig;
 import by.katomakhin.app.sto.model.certificate.PointOfCertificate;
 import by.katomakhin.app.sto.service.IPointService;
 import org.junit.Before;
@@ -16,18 +17,13 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = ApplicationConfig.class)
+@ContextConfiguration(classes = {ApplicationConfig.class, RootConfig.class})
 @ActiveProfiles("dev")
 public class PointsServiceTest {
 
     @Autowired
-    private ApplicationConfig config;
     private IPointService pointsService;
 
-    @Before
-    public void init(){
-        pointsService = config.getPointModel();
-    }
 
     @Test
     public void getPointByName() {

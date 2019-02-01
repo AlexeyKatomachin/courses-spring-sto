@@ -1,9 +1,12 @@
 package by.katomakhin.app.sto.controller;
 
 import by.katomakhin.app.sto.conf.ApplicationConfig;
+import by.katomakhin.app.sto.conf.RootConfig;
+import by.katomakhin.app.sto.conf.WebConfig;
 import by.katomakhin.app.sto.model.certificate.CertificateOfCompletion;
 import by.katomakhin.app.sto.service.dev.CertificateOfCompletionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,9 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-//@ContextConfiguration(classes = ApplicationConfig.class)
-//@ActiveProfiles("dev")
+@ContextConfiguration(classes = {ApplicationConfig.class, RootConfig.class, WebConfig.class})
+@ActiveProfiles("dev")
 public class CertificateOfCompletionController {
+    @Qualifier("certificateOfCompletionService")
     private CertificateOfCompletionService service;
 
     @Autowired
@@ -25,7 +29,7 @@ public class CertificateOfCompletionController {
     }
 
     @GetMapping(value = "/cert/{model}/{licensePlate}")
-    public ModelAndView getCertificate (ModelAndView modelAndView,@PathVariable String model, @PathVariable String licensePlate){
+    public ModelAndView getCertificate(ModelAndView modelAndView, @PathVariable String model, @PathVariable String licensePlate) {
         List<CertificateOfCompletion> cert = service.getCompleteCertificateOfCompletion(model, licensePlate);
         modelAndView.addObject(cert);
         modelAndView.setViewName("workList");

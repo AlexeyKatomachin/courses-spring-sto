@@ -19,13 +19,13 @@ public class ApplicationConfig {
 
     @Bean
     @Profile("default")
-    public ICertificateOfCompletionService getCertModel(){
+    public ICertificateOfCompletionService getCertModel() {
         return new CertificateOfCompletionService(new CertMapRepository());
     }
 
     @Bean
     @Profile("default")
-    public IPointService getPointModel(){
+    public IPointService getPointModel() {
         return new PointsService(new PointMapRepository());
     }
 }

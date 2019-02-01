@@ -4,11 +4,13 @@ import by.katomakhin.app.sto.model.car.CarInfo;
 import by.katomakhin.app.sto.model.certificate.CertificateOfCompletion;
 import by.katomakhin.app.sto.model.certificate.PointOfCertificate;
 import by.katomakhin.app.sto.service.ICertificateOfCompletionService;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class DemoCertificateOfCompletionService implements ICertificateOfCompletionService {
     @Override
     public void createCertificateOfCompletion(String carModel, String licensePlate, List<PointOfCertificate> points) {
@@ -27,9 +29,9 @@ public class DemoCertificateOfCompletionService implements ICertificateOfComplet
     public List<CertificateOfCompletion> getCompleteCertificateOfCompletion(String carModel, String licensePlate) {
         return Arrays.asList(
                 new CertificateOfCompletion(Arrays.asList(
-                    new PointOfCertificate(new BigDecimal(10.4), "Demo work 1"),
-                    new PointOfCertificate(new BigDecimal(20.0), "Demo work 2")),
-                    new BigDecimal(30.4)),
+                        new PointOfCertificate(new BigDecimal(10.4), "Demo work 1"),
+                        new PointOfCertificate(new BigDecimal(20.0), "Demo work 2")),
+                        new BigDecimal(30.4)),
                 new CertificateOfCompletion(Arrays.asList(
                         new PointOfCertificate(new BigDecimal(15.4), "Demo work 3"),
                         new PointOfCertificate(new BigDecimal(25.0), "Demo work 4")),

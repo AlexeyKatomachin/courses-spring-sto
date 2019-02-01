@@ -4,7 +4,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.ServletRegistration;
 
-public class BookWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class CertWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{RootConfig.class, ApplicationConfig.class};

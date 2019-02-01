@@ -1,7 +1,6 @@
 package by.katomakhin.app.sto.service.dev;
 
 import by.katomakhin.app.sto.dao.point.IPointRepository;
-import by.katomakhin.app.sto.model.car.CarModel;
 import by.katomakhin.app.sto.model.certificate.PointOfCertificate;
 import by.katomakhin.app.sto.service.IPointService;
 import by.katomakhin.app.sto.utils.CerUtils;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

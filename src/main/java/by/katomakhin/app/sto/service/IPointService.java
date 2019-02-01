@@ -1,11 +1,7 @@
 package by.katomakhin.app.sto.service;
 
-import by.katomakhin.app.sto.model.car.CarModel;
 import by.katomakhin.app.sto.model.certificate.PointOfCertificate;
-import by.katomakhin.app.sto.utils.CerUtils;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IPointService {

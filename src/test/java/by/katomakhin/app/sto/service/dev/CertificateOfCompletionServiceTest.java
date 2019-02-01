@@ -1,18 +1,16 @@
 package by.katomakhin.app.sto.service.dev;
 
 import by.katomakhin.app.sto.conf.ApplicationConfig;
-import by.katomakhin.app.sto.dao.certificate.ICertRepository;
-import by.katomakhin.app.sto.dao.point.IPointRepository;
+import by.katomakhin.app.sto.conf.RootConfig;
 import by.katomakhin.app.sto.model.car.CarInfo;
 import by.katomakhin.app.sto.model.car.CarModel;
 import by.katomakhin.app.sto.model.certificate.CertificateOfCompletion;
 import by.katomakhin.app.sto.model.certificate.PointOfCertificate;
 import by.katomakhin.app.sto.service.ICertificateOfCompletionService;
-import by.katomakhin.app.sto.service.IPointService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -20,24 +18,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = ApplicationConfig.class)
+@ContextConfiguration(classes = {ApplicationConfig.class, RootConfig.class})
 @ActiveProfiles("dev")
 public class CertificateOfCompletionServiceTest {
+    @Qualifier("certificateOfCompletionService")
     @Autowired
-    private ApplicationConfig config;
     private ICertificateOfCompletionService certRepository;
-    private IPointService pointRepository;
 
-    @Before
-    public void init() {
-        this.certRepository = config.getCertModel();
-        this.pointRepository = config.getPointModel();
-    }
 
     @Test
     public void createCertificateOfCompletion() {

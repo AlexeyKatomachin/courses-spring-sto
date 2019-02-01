@@ -3,10 +3,13 @@ package by.katomakhin.app.sto.dao.point.locale.map;
 import by.katomakhin.app.sto.dao.point.IPointRepository;
 import by.katomakhin.app.sto.model.car.CarModel;
 import by.katomakhin.app.sto.model.certificate.PointOfCertificate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.*;
 
+@Repository
 public class PointMapRepository implements IPointRepository {
     private final static Map<CarModel, List<PointOfCertificate>> pointsMap = new HashMap<>();
 
