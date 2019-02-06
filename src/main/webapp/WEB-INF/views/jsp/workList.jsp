@@ -9,7 +9,7 @@
 <h1>Certificate Of Completion List</h1>
 <table border="2" width="70%" cellpadding="2">
     <tr><th>Total Amount</th><th>Point</th><th>Edit</th><th>Delete</th><th>View Cert</th></tr>
-    <c:forEach var="cert" items="${cert}">
+    <c:forEach var="cert" items="${certificateOfCompletionList}">
         <tr>
             <td>${cert.totalAmount}</td>
             <td>
