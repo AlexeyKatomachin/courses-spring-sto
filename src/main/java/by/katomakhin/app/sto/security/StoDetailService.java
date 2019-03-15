@@ -18,12 +18,12 @@ public class StoDetailService implements UserDetailsService {
 
     static {
         userStorage.put("user", new StoUser("user",
-                "password",
+                "user",
                 Collections.singletonList(new SimpleGrantedAuthority("USER"))));
 
 
         userStorage.put("admin", new StoUser("admin",
-                "password",
+                "admin",
                 Arrays.asList(new SimpleGrantedAuthority("USER"), new SimpleGrantedAuthority("ADMIN"))));
     }
 

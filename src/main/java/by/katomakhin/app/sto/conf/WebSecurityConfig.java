@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -18,13 +19,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("user").password("user").roles("USER").and()
-                .withUser("admin").password("admin").roles("USER","ADMIN").and()
-                .withUser("adminchik").password("adminchik").roles("ADMIN");
+//        auth
+//                .inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
+//                .withUser("user").password("user").roles("USER").and()
+//                .withUser("admin").password("admin").roles("USER","ADMIN").and()
+//                .withUser("adminchik").password("adminchik").roles("ADMIN");
 
-        auth.userDetailsService(service);
+        auth.userDetailsService(service).passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 
     @Override
@@ -36,8 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/cert/").hasAuthority("USER")
-                .antMatchers("/points/").hasAuthority("ADMIN")
+                .antMatchers("/cert/**").hasAuthority("USER")
+                .antMatchers("/points/**").hasAuthority("ADMIN")
                 .and()
                 .formLogin()
                 .and()
@@ -45,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe()
                 .tokenValiditySeconds(2419200)
-                .key("bookShopKey")
+                .key("StoKey")
                 .and()
                 .logout().logoutSuccessUrl("/");
     }
